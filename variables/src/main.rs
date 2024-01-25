@@ -4,8 +4,77 @@ fn main() {
     // let statement = (let a = 1) // error
     // let expr = practice_expression();
     // practice_branches(3); practice_branches(2); practice_branches(4);
+    // practice_loop(3);
+    // practice_loop_label();
+    // practice_while();
+    // practice_for();
+    practice_for_range();
 }
 
+fn practice_for_range() {
+    println!("range print");
+    for el in (1..10) {
+        println!("element : {el}");
+    }
+
+    println!("range print reverse");
+    for el in (1..10).rev() {
+        println!("element : {el}");
+    }
+}
+
+fn practice_for() {
+    let arr = [1, 2, 3, 4];
+
+    for el in arr {
+        println!("arr : {el}");
+    }
+}
+
+fn practice_while() {
+    let mut index = 0;
+    while index < 10 {
+        println!("index : {index}");
+        index += 1;
+    }
+}
+
+fn practice_loop_label() {
+    let mut count: i32 = 0;
+
+    'counting_up: loop {
+        
+        println!("count : {count}");
+        let mut remaining = 10;
+        loop {
+            println!("remaining : {remaining}");
+
+            if remaining == 9 {
+                break;
+            }
+
+            if count == 2 {
+                break 'counting_up;
+            }
+            remaining -= 1;
+        }
+
+
+        count += 1;
+    }
+    println!("count of end : {count}");
+}
+
+fn practice_loop(loop_count: i32) {
+    let mut current_count = 0;
+    loop {
+        println!("hello loop : {current_count}");
+        if current_count > loop_count {
+            break println!("break count!");
+        }
+        current_count += 1;
+    }
+}
 fn practice_branches(num: i32) {
     if num == 2 {
         println!("is 2");
@@ -51,5 +120,5 @@ fn practice_variable() {
     println!("{spaces}");
     // impossible
     // let mut spaces = "     "; // String
-    // spaces = spaces.len(); // 이미 String type이라 Number type을 담을 수 없음.
+    // spaces = spaces.len(); // 이미 String type이라 Number type을 담을 수 없음.   
 }
