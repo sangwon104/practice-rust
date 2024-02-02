@@ -3,7 +3,55 @@ fn main() {
     // practice_reference_borrow();
     // practice_mutable_reference();
     // practice_scope_reference();
-    practice_dangling_pointer();
+    // practice_dangling_pointer();
+    practice_slice();
+}
+
+fn practice_slice() {
+    let mut s = String::from("hello world");
+    let hello = &s[0..5];
+    let world = &s[6..11];
+    println!("{hello}");
+    println!("{world}");
+    
+    let start = &s[..2];
+    let end = &s[2..];
+    println!("{start}");
+    println!("{end}");
+
+    let first = first_word(&s);
+    println!("{first}");
+
+    let second = second_word(&s);
+    println!("{second}");
+
+    let a = [1, 2, 3, 4, 5];
+    let slice = &a[1..4];
+    assert_eq!(slice, &[2, 3, 4]);
+}
+
+fn first_word (s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    &s[..]
+}
+
+fn second_word (s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[(i+1)..];
+        }
+    }
+
+    &s[..]
 }
 
 fn practice_dangling_pointer() {
