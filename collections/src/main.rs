@@ -1,6 +1,46 @@
 fn main() {
     // vector_basic();
-    vector_enum();
+    // vector_enum();
+    // string_basic();
+    // string_format_macro();
+    string_indexing();
+}
+
+fn string_indexing() {
+    let s1 = String::from("hello");
+    let h = s1[0];
+    println!("h : {}", h);
+}
+
+fn string_format_macro() {
+    let s1 = String::from("hello, ");
+    let s2 = String::from("world.");
+    let s3 = s1 + &s2;
+    println!("s3 : {}", s3);
+
+    let st1 = String::from("tic");
+    let st2 = String::from("tac");
+    let st3 = String::from("toe");
+    // let result = st1 + "-" + &st2 + "-" + &st3;
+    // println!("result : {}", result);
+
+    let result = format!("{st1}-{st2}-{st3}");
+    println!("result : {}", result);
+}
+
+fn string_basic() {
+    let data = "initial contents";
+    let s1 = data.to_string();
+    let s2 = String::from("initial contents"); // "initial contents".to_string() 와 동일한 의미
+    println!("data : {}", data);
+    println!("s1 : {}", s1);
+    println!("s2 : {}", s2);
+
+    let mut s3 = String::from("hello");
+    s3.push_str("hi");
+    println!("s3 : {}", s3);
+    s3.push('s');
+    println!("s3 : {}", s3);
 }
 
 #[derive(Debug)]
